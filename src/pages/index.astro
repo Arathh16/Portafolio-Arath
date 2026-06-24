@@ -1,0 +1,445 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+
+// Meta description for SEO
+const description = "Portafolio profesional de Arath. Desarrollador web enfocado en la creación de aplicaciones minimalistas, rápidas y estéticamente atractivas.";
+---
+
+<Layout title="Arath | Portfolio" description={description}>
+  <!-- Hero Section -->
+  <section class="hero container">
+    <div class="hero-bg-blur"></div>
+    <div class="hero-content animate-fade-in-up">
+      <div class="hero-badge badge animate-fade-in delay-1">Disponible para nuevos proyectos</div>
+      <h1 class="hero-title animate-fade-in-up delay-1">
+        Diseño interfaces <span class="gradient-text">minimalistas</span> & código refinado.
+      </h1>
+      <p class="hero-subtitle animate-fade-in-up delay-2">
+        Hola, soy Arath. Desarrollador web especializado en crear experiencias digitales fluidas, optimizadas y con un alto valor estético. Trabajo principalmente con tecnologías como Astro, React y CSS moderno.
+      </p>
+      <div class="hero-actions animate-fade-in-up delay-3">
+        <a href="#proyectos" class="btn btn-primary">Ver mis proyectos</a>
+        <a href="#contacto" class="btn btn-secondary">Hablemos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="proyectos" class="projects-section">
+    <div class="container">
+      <div class="section-header animate-fade-in-up">
+        <h2 class="section-title">Proyectos destacados</h2>
+        <p class="section-subtitle">
+          Una selección de trabajos recientes que muestran mis habilidades en diseño visual, desarrollo estructurado y optimización.
+        </p>
+      </div>
+
+      <div class="grid-2 projects-grid">
+        {projects.map((project) => (
+          <div class="project-wrapper">
+            <ProjectCard project={project} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="sobre-mi" class="about-section container">
+    <div class="about-grid">
+      <div class="about-info animate-fade-in-up">
+        <h2 class="section-title">Sobre mi filosofía</h2>
+        <p class="about-text">
+          Creo en la simplicidad como la máxima sofisticación. Mi enfoque se centra en eliminar el ruido visual para destacar lo esencial, garantizando interfaces intuitivas y un rendimiento de carga excepcional.
+        </p>
+        <p class="about-text">
+          Cada línea de código que escribo está pensada para ser escalable, mantenible y accesible para todos los usuarios. Me apasiona cuidar los pequeños detalles, desde las micro-interacciones hasta la optimización SEO.
+        </p>
+      </div>
+      
+      <div class="about-skills animate-fade-in-up delay-1">
+        <h3 class="skills-title">Tecnologías y Herramientas</h3>
+        <div class="skills-group">
+          <span class="skill-tag">Astro</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">JavaScript (ES6+)</span>
+          <span class="skill-tag">CSS Grid & Flexbox</span>
+          <span class="skill-tag">HTML5 Semántico</span>
+          <span class="skill-tag">React / Next.js</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">TailwindCSS</span>
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Web Perf Optimization</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contacto" class="contact-section">
+    <div class="container contact-container">
+      <div class="contact-card animate-fade-in-up">
+        <div class="contact-info">
+          <h2 class="contact-title">¿Tienes una idea en mente?</h2>
+          <p class="contact-subtitle">
+            Estoy disponible para trabajos freelance, contratos temporales o colaboraciones en proyectos interesantes. Escríbeme y lo conversamos.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:arath.dev@ejemplo.com" class="contact-link-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              arath.dev@ejemplo.com
+            </a>
+            <span class="contact-link-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              México (Remoto / Presencial)
+            </span>
+          </div>
+        </div>
+
+        <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('¡Mensaje enviado! (Demo de formulario estático).');">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" required placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" name="email" required placeholder="correo@ejemplo.com" />
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Cuéntame sobre tu proyecto..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit">
+            Enviar Mensaje
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding: var(--space-lg) 0;
+    min-height: calc(85vh - 70px);
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-bg-blur {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    width: clamp(250px, 40vw, 450px);
+    height: clamp(250px, 40vw, 450px);
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+    opacity: 0.15;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: -1;
+    transition: opacity var(--transition-medium);
+  }
+
+  :global([data-theme="light"]) .hero-bg-blur {
+    opacity: 0.08;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .hero-badge {
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero-title {
+    font-weight: 800;
+    line-height: 1.15;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 700px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-xs);
+  }
+
+  /* Projects Section */
+  .projects-section {
+    padding: var(--space-lg) 0;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-medium), border-color var(--transition-medium);
+  }
+
+  .section-header {
+    max-width: 600px;
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .section-title {
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-full);
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+
+  .projects-grid {
+    margin-top: var(--space-md);
+  }
+
+  /* About Section */
+  .about-section {
+    padding: var(--space-lg) 0;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+    }
+  }
+
+  .about-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .about-skills {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 30px -20px var(--shadow-color);
+  }
+
+  .skills-title {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+
+  .skills-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+  }
+
+  .skill-tag:hover {
+    border-color: var(--color-primary);
+    background-color: var(--bg-primary);
+    transform: scale(1.03);
+  }
+
+  /* Contact Section */
+  .contact-section {
+    padding: var(--space-lg) 0;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    transition: background-color var(--transition-medium), border-color var(--transition-medium);
+  }
+
+  .contact-container {
+    max-width: 950px;
+  }
+
+  .contact-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -20px var(--shadow-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  @media (min-width: 768px) {
+    .contact-card {
+      grid-template-columns: 1fr 1.1fr;
+    }
+  }
+
+  .contact-info {
+    padding: var(--space-md);
+    background-color: hsla(240, 12%, 11%, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-sm);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  :global([data-theme="light"]) .contact-info {
+    background-color: hsla(0, 0%, 95%, 0.5);
+  }
+
+  @media (min-width: 768px) {
+    .contact-info {
+      padding: var(--space-lg);
+      border-bottom: none;
+      border-right: 1px solid var(--border-color);
+    }
+  }
+
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: var(--space-sm);
+  }
+
+  .contact-link-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  a.contact-link-item:hover {
+    color: var(--color-primary);
+  }
+
+  /* Form */
+  .contact-form {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .contact-form {
+      padding: var(--space-lg);
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.03em;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--border-glow);
+    background-color: var(--bg-primary);
+  }
+
+  .btn-submit {
+    margin-top: 0.5rem;
+    align-self: flex-start;
+    gap: 0.5rem;
+  }
+</style>

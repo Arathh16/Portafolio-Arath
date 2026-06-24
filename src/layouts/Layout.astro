@@ -1,0 +1,317 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title, 
+  description = "Portafolio minimalista de Arath, desarrollador web enfocado en interfaces premium y código limpio.",
+  image = "/images/og-image.png"
+} = Astro.props;
+
+// Determine base path for Github Pages assets
+const base = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" href={`${base}favicon.ico`} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- Inline Script to prevent Theme Flash (FOUC) -->
+    <script is:inline>
+      const getThemePreference = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      };
+
+      const theme = getThemePreference();
+      if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+
+      if (typeof localStorage !== 'undefined') {
+        // Watch for changes in prefers-color-scheme to update theme
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            if (newTheme === 'light') {
+              document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+              document.documentElement.removeAttribute('data-theme');
+            }
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container navbar-container">
+        <a href={base} class="logo">
+          <span>Arath</span><span class="dot">.</span>
+        </a>
+        <nav class="nav-links">
+          <a href={`${base}#proyectos`}>Proyectos</a>
+          <a href={`${base}#sobre-mi`}>Sobre Mí</a>
+          <a href={`${base}#contacto`}>Contacto</a>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema visual">
+          <!-- Sun Icon -->
+          <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="M4.93 4.93l1.41 1.41"></path>
+            <path d="M17.66 17.66l1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="M6.34 17.66l-1.41 1.41"></path>
+            <path d="M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <!-- Moon Icon -->
+          <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-info">
+          <p class="copyright">&copy; {new Date().getFullYear()} Arath. Todos los derechos reservados.</p>
+          <p class="tagline">Construido con Astro y CSS puro, optimizado para GitHub Pages.</p>
+        </div>
+        <div class="footer-socials">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+          <a href="mailto:tu-correo@ejemplo.com" class="social-link">Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Theme Toggle Logic Script -->
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+          
+          if (isLight) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  /* Header & Navbar */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-medium), border-color var(--transition-medium);
+  }
+
+  .navbar-container {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+  }
+
+  .logo span {
+    display: inline-block;
+  }
+
+  .logo .dot {
+    color: var(--color-primary);
+  }
+
+  .nav-links {
+    display: none;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  @media (min-width: 600px) {
+    .nav-links {
+      display: flex;
+    }
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--color-primary);
+    transition: width var(--transition-fast);
+  }
+
+  .nav-links a:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  /* Theme Toggle Button */
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--text-muted);
+    transform: scale(1.05);
+  }
+
+  /* Show/hide icons depending on theme */
+  .sun {
+    display: block;
+  }
+  .moon {
+    display: none;
+  }
+
+  :global([data-theme="light"]) .sun {
+    display: none;
+  }
+  :global([data-theme="light"]) .moon {
+    display: block;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    padding: var(--space-md) 0;
+    margin-top: var(--space-xl);
+    transition: background-color var(--transition-medium), border-color var(--transition-medium);
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  @media (min-width: 768px) {
+    .footer-container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .copyright {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .tagline {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .social-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 0.1rem;
+  }
+
+  .social-link:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+</style>
