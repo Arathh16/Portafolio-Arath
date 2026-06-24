@@ -4,7 +4,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
 
 // Meta description for SEO
-const description = "Portafolio profesional de Arath. Desarrollador web enfocado en la creación de aplicaciones minimalistas, rápidas y estéticamente atractivas.";
+const description = "Portafolio profesional de Arath. Desarrollador backend especializado en sistemas robustos, bases de datos optimizadas y arquitecturas escalables.";
 ---
 
 <Layout title="Arath | Portfolio" description={description}>
@@ -14,10 +14,10 @@ const description = "Portafolio profesional de Arath. Desarrollador web enfocado
     <div class="hero-content animate-fade-in-up">
       <div class="hero-badge badge animate-fade-in delay-1">Disponible para nuevos proyectos</div>
       <h1 class="hero-title animate-fade-in-up delay-1">
-        Diseño interfaces <span class="gradient-text">minimalistas</span> & código refinado.
+        Backend <span class="gradient-text">robusto</span>, lógica precisa & sistemas que escalan.
       </h1>
       <p class="hero-subtitle animate-fade-in-up delay-2">
-        Hola, soy Arath. Desarrollador web especializado en crear experiencias digitales fluidas, optimizadas y con un alto valor estético. Trabajo principalmente con tecnologías como Astro, React y CSS moderno.
+        Hola, soy Arath. Desarrollador backend especializado en construir sistemas sólidos, eficientes y bien estructurados. Me enfoco en la lógica de servidor, gestión de bases de datos y arquitecturas que funcionan a cualquier escala. Trabajo con herramientas como MySQL, Python, C++, Node.js y más.
       </p>
       <div class="hero-actions animate-fade-in-up delay-3">
         <a href="#proyectos" class="btn btn-primary">Ver mis proyectos</a>
@@ -52,27 +52,27 @@ const description = "Portafolio profesional de Arath. Desarrollador web enfocado
       <div class="about-info animate-fade-in-up">
         <h2 class="section-title">Sobre mi filosofía</h2>
         <p class="about-text">
-          Creo en la simplicidad como la máxima sofisticación. Mi enfoque se centra en eliminar el ruido visual para destacar lo esencial, garantizando interfaces intuitivas y un rendimiento de carga excepcional.
+          Creo que un buen sistema backend es la columna vertebral de cualquier aplicación exitosa. Mi enfoque está en diseñar arquitecturas limpias, consultas SQL optimizadas y APIs confiables que soporten cualquier demanda de usuarios.
         </p>
         <p class="about-text">
-          Cada línea de código que escribo está pensada para ser escalable, mantenible y accesible para todos los usuarios. Me apasiona cuidar los pequeños detalles, desde las micro-interacciones hasta la optimización SEO.
+          Cada línea de código que escribo está pensada para ser escalable, mantenible y eficiente en recursos. Me apasiona resolver problemas complejos de lógica de negocio, seguridad de datos y rendimiento de sistemas en producción.
         </p>
       </div>
       
       <div class="about-skills animate-fade-in-up delay-1">
         <h3 class="skills-title">Tecnologías y Herramientas</h3>
         <div class="skills-group">
-          <span class="skill-tag">Astro</span>
-          <span class="skill-tag">TypeScript</span>
-          <span class="skill-tag">JavaScript (ES6+)</span>
-          <span class="skill-tag">CSS Grid & Flexbox</span>
-          <span class="skill-tag">HTML5 Semántico</span>
-          <span class="skill-tag">React / Next.js</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C++</span>
           <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">TailwindCSS</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">Linux / Bash</span>
           <span class="skill-tag">Git & GitHub</span>
-          <span class="skill-tag">Figma</span>
-          <span class="skill-tag">Web Perf Optimization</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Arquitectura MVC</span>
         </div>
       </div>
     </div>
@@ -88,19 +88,33 @@ const description = "Portafolio profesional de Arath. Desarrollador web enfocado
             Estoy disponible para trabajos freelance, contratos temporales o colaboraciones en proyectos interesantes. Escríbeme y lo conversamos.
           </p>
           <div class="contact-links">
-            <a href="mailto:arath.dev@ejemplo.com" class="contact-link-item">
+            <a href="mailto:Carathrd@gmail.com" class="contact-link-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </svg>
-              arath.dev@ejemplo.com
+              Carathrd@gmail.com
+            </a>
+            <a href="https://wa.me/59269929" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              WhatsApp: +502 5926-9929
+            </a>
+            <a href="https://instagram.com/Arath_Rivera" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              @Arath_Rivera
             </a>
             <span class="contact-link-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              México (Remoto / Presencial)
+              Guatemala, Guatemala
             </span>
           </div>
         </div>
